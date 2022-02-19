@@ -1,9 +1,10 @@
-package com.androidnexos.testceiba
+package com.androidnexos.testceiba.usermain.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.androidnexos.testceiba.R
 
-class MainActivity : AppCompatActivity() {
+class UserMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
