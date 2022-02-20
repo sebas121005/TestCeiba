@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.android.testceiba.api.UserRepository
 import com.android.testceiba.db.UserDBImplement
 import com.android.testceiba.usermain.model.User
+import com.android.testceiba.usermain.model.UserDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +23,6 @@ class UserMainViewModel: ViewModel() {
             val response = mUserRepository?.getUsers()
             if (response?.isSuccessful!!) {
                 Log.e("USERS", response.body().toString())
-                Log.e("ID", mRoomImpl?.userDao()?.findUserId().toString())
                 withContext(Dispatchers.Main) {
 
                 }
@@ -30,7 +30,7 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
-    suspend fun insertUsers(users: List<User>) {
+    suspend fun insertUsers(users: UserDB) {
         mRoomImpl?.userDao()?.insertUser(users)
     }
 
