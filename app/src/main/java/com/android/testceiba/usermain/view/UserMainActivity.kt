@@ -69,8 +69,10 @@ class UserMainActivity : AppCompatActivity() {
                         dataListUser.addAll(filterList!!)
                         mUserMainAdapter?.notifyDataSetChanged()
                     } else {
-
+                        mMainViewModel?.getUsers()
                     }
+                } else {
+                    mMainViewModel?.getUsers()
                 }
             }
 
