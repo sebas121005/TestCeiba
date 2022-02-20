@@ -26,9 +26,11 @@ class UserDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mActivityUserDetailBinding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(mActivityUserDetailBinding?.root)
+
+        initializeWidgets()
     }
 
-    fun initializeWidgets() {
+    private fun initializeWidgets() {
         mDetailAdapter = UserDetailAdapter(this, dataListPost)
         with(mActivityUserDetailBinding?.listPost) {
             this?.layoutManager = LinearLayoutManager(this@UserDetailActivity)
@@ -38,7 +40,11 @@ class UserDetailActivity : AppCompatActivity() {
         mDetailVieModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
         mDetailVieModel?.mUserRepository = UserRepository(WebService.getInstance())
         intent.extras?.let {
-            it.getInt(UserMainActivity.USER_ID)
+            mDetailVieModel?.getPosts(it.getInt(UserMainActivity.USER_ID).toString())
         }
+    }
+
+    fun observables() {
+
     }
 }
