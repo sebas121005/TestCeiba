@@ -65,15 +65,7 @@ class UserMainActivity : AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (p0!!.isNotEmpty()) {
-                    val filterList = mUserMainAdapter?.filter(p0.toString())
-                    if (filterList?.size != 0) {
-                        dataListUser.clear()
-                        dataListUser.addAll(filterList!!)
-                        mUserMainAdapter?.notifyDataSetChanged()
-                    } else {
-                        mMainViewModel?.getUsers()
-                        Toast.makeText(this@UserMainActivity, getString(R.string.lista_empty), Toast.LENGTH_SHORT).show()
-                    }
+                    validateFilterList(mUserMainAdapter?.filter(p0.toString()))
                 } else {
                     mMainViewModel?.getUsers()
                 }
@@ -108,5 +100,16 @@ class UserMainActivity : AppCompatActivity() {
                 mMainBinding?.loading?.visibility = View.GONE
             }
         })
+    }
+
+    private fun validateFilterList(filterList: List<User>?) {
+        if (filterList?.size != 0) {
+            dataListUser.clear()
+            dataListUser.addAll(filterList!!)
+            mUserMainAdapter?.notifyDataSetChanged()
+        } else {
+            mMainViewModel?.getUsers()
+            Toast.makeText(this@UserMainActivity, getString(R.string.lista_empty), Toast.LENGTH_SHORT).show()
+        }
     }
 }
