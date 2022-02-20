@@ -15,11 +15,11 @@ class UserDetailAdapter(private val context: Context, private val listPost: List
     }
 
     override fun onBindViewHolder(holder: ViewHolderDetail, position: Int) {
-        TODO("Not yet implemented")
+        holder.addPost(listPost[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return listPost.size
     }
 
     class ViewHolderDetail(private val itemPostBinding: ItemPostBinding):
