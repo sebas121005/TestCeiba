@@ -23,6 +23,7 @@ class UserMainViewModel: ViewModel() {
             val response = mUserRepository?.getUsers()
             if (response?.isSuccessful!!) {
                 Log.e("USERS", response.body().toString())
+                insertUsers(response.body()!!)
                 withContext(Dispatchers.Main) {
 
                 }
@@ -30,8 +31,21 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
-    suspend fun insertUsers(users: UserDB) {
-        mRoomImpl?.userDao()?.insertUser(users)
+    private suspend fun insertUsers(listUsers: List<User>) {
+        val dataUserId = mRoomImpl?.userDao()?.findUserId()
+        var userDB: UserDB
+        for (i in listUsers.indices) {
+            dataUserId?.let {
+                if (listUsers[i].id != it) {
+                    userDB = UserDB(listUsers[i].id, listUsers[i].name, listUsers[i].phone, listUsers[i].email)
+                    mRoomImpl?.userDao()?.insertUser(userDB)
+                }
+
+            } ?: run {
+                userDB = UserDB(listUsers[i].id, listUsers[i].name, listUsers[i].phone, listUsers[i].email)
+                mRoomImpl?.userDao()?.insertUser(userDB)
+            }
+        }
     }
 
 }
