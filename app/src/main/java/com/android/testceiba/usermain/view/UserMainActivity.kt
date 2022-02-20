@@ -20,7 +20,7 @@ class UserMainActivity : AppCompatActivity() {
 
     private var mUserMainAdapter: UserMainAdapter? = null
 
-    private var dataListUser: List<User> = ArrayList()
+    private var dataListUser = ArrayList<User>()
 
     companion object {
         const val DB_NAME = "USER_DB"
@@ -50,8 +50,10 @@ class UserMainActivity : AppCompatActivity() {
     }
 
     private fun observables() {
-        mMainViewModel?.getUserLiveData.observe(this, {
-
+        mMainViewModel?.getUserLiveData?.observe(this, {
+            dataListUser.clear()
+            dataListUser.addAll(it)
+            mUserMainAdapter?.notifyDataSetChanged()
         })
     }
 }
