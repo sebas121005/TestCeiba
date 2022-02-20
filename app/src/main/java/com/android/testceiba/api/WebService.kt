@@ -1,5 +1,6 @@
 package com.android.testceiba.api
 
+import com.android.testceiba.userdetail.model.Post
 import com.android.testceiba.usermain.model.User
 import retrofit2.Response
 import retrofit2.Retrofit
