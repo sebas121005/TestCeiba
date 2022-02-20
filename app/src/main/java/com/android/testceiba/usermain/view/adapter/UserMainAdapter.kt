@@ -19,7 +19,7 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
         }
 
         override fun getItemCount(): Int {
-                TODO("Not yet implemented")
+                return listUsers.size
         }
 
         class ViewHolderUser(private val itemUserBinding: ItemUserBinding?):
