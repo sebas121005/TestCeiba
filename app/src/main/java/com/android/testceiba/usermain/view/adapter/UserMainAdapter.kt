@@ -1,9 +1,10 @@
-package com.androidnexos.testceiba.usermain.view.adapter
+package com.android.testceiba.usermain.view.adapter
 
 import android.content.Context
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.androidnexos.testceiba.usermain.model.User
+import com.android.testceiba.usermain.model.User
 
 class UserMainAdapter(private val context: Context, private val listUsers: List<User>):
         RecyclerView.Adapter<UserMainAdapter.ViewHolderUser>() {
@@ -19,7 +20,7 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
                 TODO("Not yet implemented")
         }
 
-        class ViewHolderUser(): RecyclerView.ViewHolder() {
+        class ViewHolderUser(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         }
 

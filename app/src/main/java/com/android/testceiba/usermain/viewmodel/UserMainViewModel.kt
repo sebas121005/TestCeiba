@@ -1,7 +1,7 @@
-package com.androidnexos.testceiba.usermain.viewmodel
+package com.android.testceiba.usermain.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.androidnexos.testceiba.api.UserRepository
+import com.android.testceiba.api.UserRepository
 
 class UserMainViewModel(private val userRepository: UserRepository): ViewModel() {
 

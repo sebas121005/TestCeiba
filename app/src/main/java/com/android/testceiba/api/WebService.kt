@@ -1,6 +1,6 @@
-package com.androidnexos.testceiba.api
+package com.android.testceiba.api
 
-import com.androidnexos.testceiba.usermain.model.User
+import com.android.testceiba.usermain.model.User
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

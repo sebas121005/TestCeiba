@@ -1,4 +1,4 @@
-package com.androidnexos.testceiba.usermain.model
+package com.android.testceiba.usermain.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.androidnexos.testceiba
+package com.android.testceiba
 
 import org.junit.Test
 

@@ -7,7 +7,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.androidnexos.testceiba"
+        applicationId "com.android.testceiba"
         minSdk 23
         targetSdk 31
         versionCode 1
@@ -46,4 +46,8 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 }
