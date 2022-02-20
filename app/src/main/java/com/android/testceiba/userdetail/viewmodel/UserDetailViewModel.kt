@@ -25,6 +25,7 @@ class UserDetailViewModel: ViewModel() {
                 withContext(Dispatchers.Main) {
                     response.body()?.let {
                         getPostLiveData.value = it
+                        showLoadingLiveData.value = false
                     }
                 }
             }

@@ -2,6 +2,7 @@ package com.android.testceiba.userdetail.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.testceiba.R
@@ -40,6 +41,7 @@ class UserDetailActivity : AppCompatActivity() {
 
         mDetailVieModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
         mDetailVieModel?.mUserRepository = UserRepository(WebService.getInstance())
+        mDetailVieModel?.showLoadingLiveData?.value = true
         intent.extras?.let {
             mDetailVieModel?.getPosts(it.getInt(UserMainActivity.USER_ID).toString())
             showUser(it.getString(UserMainActivity.USER_NAME), it.getString(UserMainActivity.USER_PHONE),
@@ -52,6 +54,14 @@ class UserDetailActivity : AppCompatActivity() {
             dataListPost.clear()
             dataListPost.addAll(it)
             mDetailAdapter?.notifyDataSetChanged()
+        })
+
+        mDetailVieModel?.showLoadingLiveData?.observe(this, {
+            if (it) {
+                mActivityUserDetailBinding?.loading?.visibility = View.VISIBLE
+            } else {
+                mActivityUserDetailBinding?.loading?.visibility = View.GONE
+            }
         })
     }
 
