@@ -31,14 +31,12 @@
                 app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/green"
-                android:text="JUAN"/>
+                android:textColor="@color/green" />
 
             <TextView
-                android:id="@+id/user_phone"
+                android:id="@+id/post_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12345"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_title"
                 android:layout_marginStart="10dp"
