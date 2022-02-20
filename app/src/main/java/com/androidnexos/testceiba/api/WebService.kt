@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface WebService {
     @GET("users/")
-    suspend fun getAllMovies() : Response<List<User>>
+    suspend fun getUsers() : Response<List<User>>
 
     companion object {
         var webService: WebService? = null
