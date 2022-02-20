@@ -9,7 +9,9 @@ import com.android.testceiba.databinding.ItemUserBinding
 import com.android.testceiba.usermain.model.User
 
 class UserMainAdapter(private val context: Context, private val listUsers: List<User>):
-        RecyclerView.Adapter<UserMainAdapter.ViewHolderUser>() {
+        RecyclerView.Adapter<UserMainAdapter.ViewHolderUser>(), View.OnClickListener {
+        var mListenerPost: View.OnClickListener? = null
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUser {
                 return ViewHolderUser(ItemUserBinding.inflate(LayoutInflater.from(context), parent, false))
         }
@@ -20,6 +22,14 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
 
         override fun getItemCount(): Int {
                 return listUsers.size
+        }
+
+        override fun onClick(view: View?) {
+                mListenerPost?.onClick(view)
+        }
+
+        fun setPostOnClickListener(listener: View.OnClickListener) {
+               mListenerPost = listener
         }
 
         class ViewHolderUser(private val itemUserBinding: ItemUserBinding?):
