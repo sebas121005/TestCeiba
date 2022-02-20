@@ -42,6 +42,8 @@ class UserDetailActivity : AppCompatActivity() {
         mDetailVieModel?.mUserRepository = UserRepository(WebService.getInstance())
         intent.extras?.let {
             mDetailVieModel?.getPosts(it.getInt(UserMainActivity.USER_ID).toString())
+            showUser(it.getString(UserMainActivity.USER_NAME), it.getString(UserMainActivity.USER_PHONE),
+            it.getString(UserMainActivity.USER_EMAIL))
         }
     }
 
@@ -51,5 +53,12 @@ class UserDetailActivity : AppCompatActivity() {
             dataListPost.addAll(it)
             mDetailAdapter?.notifyDataSetChanged()
         })
+    }
+
+    private fun showUser(userName: String?, phone: String?, email: String?) {
+        mActivityUserDetailBinding?.userName?.text = userName
+        mActivityUserDetailBinding?.userPhone?.text = phone
+        mActivityUserDetailBinding?.userEmail?.text = email
+
     }
 }

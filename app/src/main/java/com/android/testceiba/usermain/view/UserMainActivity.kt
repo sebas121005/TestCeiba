@@ -28,6 +28,9 @@ class UserMainActivity : AppCompatActivity() {
     companion object {
         const val DB_NAME = "USER_DB"
         const val USER_ID = "ID"
+        const val USER_NAME = "NAME"
+        const val USER_PHONE = "PHONE"
+        const val USER_EMAIL = "EMAIL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +58,10 @@ class UserMainActivity : AppCompatActivity() {
         mUserMainAdapter?.setPostOnClickListener {
             val user = dataListUser[mMainBinding?.listUsers?.getChildAdapterPosition(it)!!]
             startActivity(Intent(this, UserDetailActivity::class.java)
-                .putExtra(USER_ID, user.id))
+                .putExtra(USER_ID, user.id)
+                .putExtra(USER_NAME, user.name)
+                .putExtra(USER_PHONE, user.phone)
+                .putExtra(USER_EMAIL, user.email))
         }
     }
 
