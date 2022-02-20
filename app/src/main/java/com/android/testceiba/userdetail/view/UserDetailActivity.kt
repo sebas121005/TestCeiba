@@ -2,8 +2,11 @@ package com.android.testceiba.userdetail.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.testceiba.R
+import com.android.testceiba.api.UserRepository
+import com.android.testceiba.api.WebService
 import com.android.testceiba.databinding.ActivityUserDetailBinding
 import com.android.testceiba.userdetail.model.Post
 import com.android.testceiba.userdetail.view.adapter.UserDetailAdapter
@@ -30,5 +33,8 @@ class UserDetailActivity : AppCompatActivity() {
             this?.layoutManager = LinearLayoutManager(this@UserDetailActivity)
             this?.adapter = mDetailAdapter
         }
+
+        mDetailVieModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
+        mDetailVieModel?.mUserRepository = UserRepository(WebService.getInstance())
     }
 }
