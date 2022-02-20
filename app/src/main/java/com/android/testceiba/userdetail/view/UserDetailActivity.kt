@@ -28,6 +28,7 @@ class UserDetailActivity : AppCompatActivity() {
         setContentView(mActivityUserDetailBinding?.root)
 
         initializeWidgets()
+        observables()
     }
 
     private fun initializeWidgets() {
@@ -44,7 +45,11 @@ class UserDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun observables() {
-
+    private fun observables() {
+        mDetailVieModel?.getPostLiveData?.observe(this, {
+            dataListPost.clear()
+            dataListPost.addAll(it)
+            mDetailAdapter?.notifyDataSetChanged()
+        })
     }
 }
