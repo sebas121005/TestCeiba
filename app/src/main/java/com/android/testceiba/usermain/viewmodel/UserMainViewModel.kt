@@ -22,7 +22,7 @@ class UserMainViewModel: ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = mUserRepository?.getUsers()
             if (response?.isSuccessful!!) {
-                Log.e("USERS", response.body().toString())
+
                 insertUsers(response.body()!!)
                 withContext(Dispatchers.Main) {
 
@@ -32,16 +32,13 @@ class UserMainViewModel: ViewModel() {
     }
 
     private suspend fun insertUsers(listUsers: List<User>) {
-        val dataUserId = mRoomImpl?.userDao()?.findUserId()
+
         var userDB: UserDB
         for (i in listUsers.indices) {
-            dataUserId?.let {
-                if (listUsers[i].id != it) {
-                    userDB = UserDB(listUsers[i].id, listUsers[i].name, listUsers[i].phone, listUsers[i].email)
-                    mRoomImpl?.userDao()?.insertUser(userDB)
-                }
-
-            } ?: run {
+            val dataUserId = mRoomImpl?.userDao()?.findUserId(listUsers[i].id)
+            if (dataUserId?.size != 0) {
+                continue
+            } else {
                 userDB = UserDB(listUsers[i].id, listUsers[i].name, listUsers[i].phone, listUsers[i].email)
                 mRoomImpl?.userDao()?.insertUser(userDB)
             }

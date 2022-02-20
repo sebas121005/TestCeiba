@@ -10,6 +10,6 @@ interface UserDao {
     @Insert
     suspend fun insertUser(usersDB: UserDB)
 
-    @Query("SELECT id FROM UserDB")
-    suspend fun findUserId(): Int
+    @Query("SELECT * FROM UserDB WHERE id = :id")
+    suspend fun findUserId(id: Int): List<UserDB>
 }
