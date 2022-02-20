@@ -46,6 +46,11 @@ class UserMainActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     private fun initializeWidgets() {
         mUserMainAdapter = UserMainAdapter(this, dataListUser)
         with(mMainBinding?.listUsers) {

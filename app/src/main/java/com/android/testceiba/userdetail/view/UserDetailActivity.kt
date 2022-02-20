@@ -32,6 +32,11 @@ class UserDetailActivity : AppCompatActivity() {
         observables()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     private fun initializeWidgets() {
         mDetailAdapter = UserDetailAdapter(this, dataListPost)
         with(mActivityUserDetailBinding?.listPost) {
