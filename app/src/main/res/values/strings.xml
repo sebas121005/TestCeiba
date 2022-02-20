@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TestCeiba</string>
     <string name="ver_publicaciones">VER PUBLICACIONES</string>
+    <string name="buscar_usuario">Buscar usuario</string>
 </resources>

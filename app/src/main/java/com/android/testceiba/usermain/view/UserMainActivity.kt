@@ -3,6 +3,8 @@ package com.android.testceiba.usermain.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +56,21 @@ class UserMainActivity : AppCompatActivity() {
         mMainViewModel?.mUserRepository = UserRepository(WebService.getInstance())
         mMainViewModel?.mRoomImpl = Room.databaseBuilder(this, UserDBImplement::class.java, DB_NAME).build()
         mMainViewModel?.getUsers()
+
+        mMainBinding?.searchUsers?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (p0!!.isNotEmpty()) {
+                    
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
 
         mUserMainAdapter?.setPostOnClickListener {
             val user = dataListUser[mMainBinding?.listUsers?.getChildAdapterPosition(it)!!]
