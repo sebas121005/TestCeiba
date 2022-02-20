@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
-            android:name="com.android.com.android.testceiba.usermain.view.UserMainActivity"
+            android:name="com.android.testceiba.usermain.view.UserMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
