@@ -22,10 +22,12 @@ class UserMainViewModel: ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = mUserRepository?.getUsers()
             if (response?.isSuccessful!!) {
+                response.body()?.let {
+                    insertUsers(it)
 
-                insertUsers(response.body()!!)
-                withContext(Dispatchers.Main) {
-
+                    withContext(Dispatchers.Main) {
+                        getUserLiveData.value = it
+                    }
                 }
             }
         }
