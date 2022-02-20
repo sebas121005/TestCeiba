@@ -11,6 +11,7 @@ import com.android.testceiba.databinding.ActivityUserDetailBinding
 import com.android.testceiba.userdetail.model.Post
 import com.android.testceiba.userdetail.view.adapter.UserDetailAdapter
 import com.android.testceiba.userdetail.viewmodel.UserDetailViewModel
+import com.android.testceiba.usermain.view.UserMainActivity
 
 class UserDetailActivity : AppCompatActivity() {
     private var mActivityUserDetailBinding: ActivityUserDetailBinding? = null
@@ -36,5 +37,8 @@ class UserDetailActivity : AppCompatActivity() {
 
         mDetailVieModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
         mDetailVieModel?.mUserRepository = UserRepository(WebService.getInstance())
+        intent.extras?.let {
+            it.getInt(UserMainActivity.USER_ID)
+        }
     }
 }
