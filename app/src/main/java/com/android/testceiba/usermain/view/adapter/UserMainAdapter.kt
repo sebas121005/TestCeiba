@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.testceiba.databinding.ItemUserBinding
 import com.android.testceiba.usermain.model.User
+import java.util.*
+import kotlin.collections.ArrayList
 
 class UserMainAdapter(private val context: Context, private val listUsers: List<User>):
         RecyclerView.Adapter<UserMainAdapter.ViewHolderUser>(), View.OnClickListener {
@@ -32,6 +34,23 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
 
         fun setPostOnClickListener(listener: View.OnClickListener) {
                mListenerPost = listener
+        }
+
+        fun filter(textForTheFilter: String): List<User> {
+                val filteredList = ArrayList<User>()
+                if (textForTheFilter.isEmpty()) {
+                        filteredList.addAll(listUsers)
+                } else {
+                        val filterPattern = textForTheFilter.lowercase(Locale.getDefault())
+                        for (mUser in listUsers) {
+                                val validateText = mUser.name.lowercase(Locale.getDefault())
+                                if (validateText.contains(filterPattern)) {
+                                        filteredList.add(mUser)
+                                }
+
+                        }
+                }
+                return filteredList
         }
 
         class ViewHolderUser(private val itemUserBinding: ItemUserBinding?):
