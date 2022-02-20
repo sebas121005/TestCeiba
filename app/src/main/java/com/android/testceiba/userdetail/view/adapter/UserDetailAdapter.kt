@@ -24,7 +24,10 @@ class UserDetailAdapter(private val context: Context, private val listPost: List
 
     class ViewHolderDetail(private val itemPostBinding: ItemPostBinding):
                     RecyclerView.ViewHolder(itemPostBinding.root) {
-
+                        fun addPost(post: Post) {
+                            itemPostBinding.postTitle.text = post.postTitle
+                            itemPostBinding.postBody.text = post.postBody
+                        }
 
     }
 }
