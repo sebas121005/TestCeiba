@@ -3,6 +3,7 @@ package com.android.testceiba.usermain.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.android.testceiba.R
 import com.android.testceiba.api.UserRepository
@@ -30,19 +31,25 @@ class UserMainActivity : AppCompatActivity() {
         mMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mMainBinding?.root)
 
+        initializeWidgets()
+        observables()
 
     }
 
-    fun initializeWidgets() {
+    private fun initializeWidgets() {
         mUserMainAdapter = UserMainAdapter(this, dataListUser)
-        
+        with(mMainBinding?.listUsers) {
+            this?.layoutManager = LinearLayoutManager(this@UserMainActivity)
+            this?.adapter = mUserMainAdapter
+        }
+
         mMainViewModel = ViewModelProvider(this)[UserMainViewModel::class.java]
         mMainViewModel?.mUserRepository = UserRepository(WebService.getInstance())
         mMainViewModel?.mRoomImpl = Room.databaseBuilder(this, UserDBImplement::class.java, DB_NAME).build()
         mMainViewModel?.getUsers()
     }
 
-    fun observables() {
+    private fun observables() {
         mMainViewModel?.getUserLiveData.observe(this, {
 
         })
