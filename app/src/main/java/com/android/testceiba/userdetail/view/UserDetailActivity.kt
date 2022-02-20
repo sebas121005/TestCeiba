@@ -6,7 +6,7 @@ import com.android.testceiba.R
 import com.android.testceiba.databinding.ActivityMainBinding
 
 class UserDetailActivity : AppCompatActivity() {
-    var mActivityUserDetailBinding: ActivityMainBinding? = null
+    private var mActivityUserDetailBinding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +15,6 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     fun initializeWidgets() {
-        
+
     }
 }
