@@ -15,15 +15,20 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
         }
 
         override fun onBindViewHolder(holder: ViewHolderUser, position: Int) {
-                TODO("Not yet implemented")
+                holder.addItemUser(listUsers[position])
         }
 
         override fun getItemCount(): Int {
                 TODO("Not yet implemented")
         }
 
-        class ViewHolderUser(private val itemUserBinding: ItemUserBinding):
-                RecyclerView.ViewHolder(itemUserBinding.root) {
+        class ViewHolderUser(private val itemUserBinding: ItemUserBinding?):
+                RecyclerView.ViewHolder(itemUserBinding!!.root) {
+                fun addItemUser(user: User) {
+                        itemUserBinding?.userName?.text = user.name
+                        itemUserBinding?.userPhone?.text = user.phone
+                        itemUserBinding?.userEmail?.text = user.email
+                }
 
         }
 
