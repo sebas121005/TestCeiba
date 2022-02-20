@@ -22,6 +22,7 @@ class UserMainViewModel: ViewModel() {
             val response = mUserRepository?.getUsers()
             if (response?.isSuccessful!!) {
                 Log.e("USERS", response.body().toString())
+                Log.e("ID", mRoomImpl?.userDao()?.findUserId().toString())
                 withContext(Dispatchers.Main) {
 
                 }
