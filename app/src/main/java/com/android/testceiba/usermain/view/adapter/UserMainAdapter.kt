@@ -13,7 +13,9 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
         var mListenerPost: View.OnClickListener? = null
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUser {
-                return ViewHolderUser(ItemUserBinding.inflate(LayoutInflater.from(context), parent, false))
+                val view =  ItemUserBinding.inflate(LayoutInflater.from(context), parent, false)
+                view.root.setOnClickListener(this)
+                return ViewHolderUser (view)
         }
 
         override fun onBindViewHolder(holder: ViewHolderUser, position: Int) {
