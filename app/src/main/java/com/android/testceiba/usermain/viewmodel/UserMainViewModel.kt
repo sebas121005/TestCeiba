@@ -27,7 +27,6 @@ class UserMainViewModel: ViewModel() {
                     insertUsers(it)
 
                     withContext(Dispatchers.Main) {
-                        showLoadingLiveData.value = true
                         getUserLiveData.value = it
                         showLoadingLiveData.value = false
                     }

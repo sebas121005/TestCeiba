@@ -55,6 +55,7 @@ class UserMainActivity : AppCompatActivity() {
         mMainViewModel = ViewModelProvider(this)[UserMainViewModel::class.java]
         mMainViewModel?.mUserRepository = UserRepository(WebService.getInstance())
         mMainViewModel?.mRoomImpl = Room.databaseBuilder(this, UserDBImplement::class.java, DB_NAME).build()
+        mMainViewModel?.showLoadingLiveData?.value = true
         mMainViewModel?.getUsers()
 
         mMainBinding?.searchUsers?.addTextChangedListener(object : TextWatcher {
