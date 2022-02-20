@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 
 class UserMainViewModel: ViewModel() {
     val getUserLiveData = MutableLiveData<List<User>>()
+    val showLoadingLiveData = MutableLiveData<Boolean>()
 
     var mUserRepository: UserRepository? = null
     var mRoomImpl: UserDBImplement? = null
