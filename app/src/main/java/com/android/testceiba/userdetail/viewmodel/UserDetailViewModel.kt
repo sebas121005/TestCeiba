@@ -15,8 +15,9 @@ class UserDetailViewModel: ViewModel() {
 
     var getPostLiveData = MutableLiveData<List<Post>>()
 
-    fun getPosts() {
+    fun getPosts(userId: String) {
         CoroutineScope(Dispatchers.IO).launch {
+            mUserRepository?.userId = userId
             val response = mUserRepository?.getPost()
             if (response?.isSuccessful!!) {
                 withContext(Dispatchers.Main) {
