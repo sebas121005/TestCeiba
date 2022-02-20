@@ -32,6 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/green"
                 android:text="JUAN"/>
 
             <ImageView
@@ -69,7 +70,7 @@
                 app:layout_constraintTop_toBottomOf="@id/user_phone"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
+            <Button
                 android:id="@+id/see_publications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +80,9 @@
                 android:layout_marginEnd="20dp"
                 android:textStyle="bold"
                 android:contextClickable="true"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/green"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
