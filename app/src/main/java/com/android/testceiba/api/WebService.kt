@@ -5,10 +5,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WebService {
     @GET("users/")
     suspend fun getUsers() : Response<List<User>>
+
+    @GET("posts/")
+    suspend fun getPosts(@Query("userId") userId: String): Response<List<Post>>
 
     companion object {
         var webService: WebService? = null
