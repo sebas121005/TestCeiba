@@ -1,7 +1,9 @@
 package com.android.testceiba.usermain.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -10,6 +12,7 @@ import com.android.testceiba.api.UserRepository
 import com.android.testceiba.api.WebService
 import com.android.testceiba.databinding.ActivityMainBinding
 import com.android.testceiba.db.UserDBImplement
+import com.android.testceiba.userdetail.view.UserDetailActivity
 import com.android.testceiba.usermain.model.User
 import com.android.testceiba.usermain.view.adapter.UserMainAdapter
 import com.android.testceiba.usermain.viewmodel.UserMainViewModel
@@ -47,6 +50,12 @@ class UserMainActivity : AppCompatActivity() {
         mMainViewModel?.mUserRepository = UserRepository(WebService.getInstance())
         mMainViewModel?.mRoomImpl = Room.databaseBuilder(this, UserDBImplement::class.java, DB_NAME).build()
         mMainViewModel?.getUsers()
+
+        mUserMainAdapter?.setPostOnClickListener {
+            val user = dataListUser[mMainBinding?.listUsers?.getChildAdapterPosition(it)!!]
+            startActivity(Intent(this, UserDetailActivity::class.java)
+                .putExtra("", user.id))
+        }
     }
 
     private fun observables() {
