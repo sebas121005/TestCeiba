@@ -97,5 +97,13 @@ class UserMainActivity : AppCompatActivity() {
             dataListUser.addAll(it)
             mUserMainAdapter?.notifyDataSetChanged()
         })
+
+        mMainViewModel?.showLoadingLiveData?.observe(this, {
+            if (it) {
+                mMainBinding?.loading?.visibility = View.VISIBLE
+            } else {
+                mMainBinding?.loading?.visibility = View.GONE
+            }
+        })
     }
 }
