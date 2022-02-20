@@ -5,5 +5,5 @@ import com.android.testceiba.usermain.model.User
 
 interface UserDao {
     @Insert
-    fun insertUser(listUsers: List<User>)
+    suspend fun insertUser(listUsers: List<User>)
 }

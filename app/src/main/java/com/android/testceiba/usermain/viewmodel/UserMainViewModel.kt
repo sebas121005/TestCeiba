@@ -25,4 +25,8 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
+    fun insertUsers() {
+        
+    }
+
 }
