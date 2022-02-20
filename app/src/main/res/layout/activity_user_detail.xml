@@ -7,7 +7,7 @@
     <data>
         <variable
             name="model"
-            type="" />
+            type="com.android.testceiba.userdetail.viewmodel.UserDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
