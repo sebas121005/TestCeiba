@@ -2,6 +2,7 @@ package com.android.testceiba
 
 import com.android.testceiba.api.UserRepository
 import com.android.testceiba.api.WebService
+import com.android.testceiba.userdetail.model.Post
 import com.android.testceiba.usermain.model.User
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -43,5 +44,19 @@ class UserRepositoryTest {
         //Assert
         Assert.assertNotNull(result.body())
     }
-    
+
+    @Test
+    fun getPost_isCorrect_fullList() = runBlocking {
+        //Arrange
+        val sizeList = 0
+        val userId = "1"
+
+        //Act
+        userRepository.userId = userId
+        val result: Response<List<Post>> = userRepository.getPost()
+
+        //Assert
+        Assert.assertNotEquals(sizeList, result.body()?.size)
+    }
+
 }
