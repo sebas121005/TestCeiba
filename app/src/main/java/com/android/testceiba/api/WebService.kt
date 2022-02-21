@@ -9,18 +9,23 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WebService {
-    @GET("users/")
+    @GET(API_USERS)
     suspend fun getUsers() : Response<List<User>>
 
-    @GET("posts/")
-    suspend fun getPosts(@Query("userId") userId: String): Response<List<Post>>
+    @GET(API_POST)
+    suspend fun getPosts(@Query(USER_ID) userId: String): Response<List<Post>>
 
     companion object {
+        const val API_USERS = "users/"
+        const val API_POST = "posts/"
+        const val USER_ID = "userId"
+        const val URL = "https://jsonplaceholder.typicode.com/"
+        
         var webService: WebService? = null
         fun getInstance() : WebService {
             if (webService == null) {
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("https://jsonplaceholder.typicode.com/")
+                    .baseUrl(URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 webService = retrofit.create(WebService::class.java)
