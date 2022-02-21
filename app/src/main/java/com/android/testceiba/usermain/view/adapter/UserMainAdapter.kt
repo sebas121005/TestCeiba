@@ -22,6 +22,7 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
 
         override fun onBindViewHolder(holder: ViewHolderUser, position: Int) {
                 holder.addItemUser(listUsers[position])
+                holder.onClickListener(mListenerPost!!)
         }
 
         override fun getItemCount(): Int {
@@ -59,6 +60,12 @@ class UserMainAdapter(private val context: Context, private val listUsers: List<
                         itemUserBinding?.userName?.text = user.name
                         itemUserBinding?.userPhone?.text = user.phone
                         itemUserBinding?.userEmail?.text = user.email
+                }
+
+                fun onClickListener(listener: View.OnClickListener) {
+                        itemUserBinding?.seePublications?.setOnClickListener {
+                                listener.onClick(itemUserBinding.root)
+                        }
                 }
 
         }
