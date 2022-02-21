@@ -19,8 +19,7 @@ class UserDetailViewModel: ViewModel() {
 
     fun getPosts(userId: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            mUserRepository?.userId = userId
-            val response = mUserRepository?.getPost()
+            val response = mUserRepository?.getPost(userId)
             if (response?.isSuccessful!!) {
                 withContext(Dispatchers.Main) {
                     response.body()?.let {
