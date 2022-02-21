@@ -59,4 +59,17 @@ class UserRepositoryTest {
         Assert.assertNotEquals(sizeList, result.body()?.size)
     }
 
+    @Test
+    fun getPost_isFailure_emptyList() = runBlocking {
+        //Arrange
+        val userId = "11"
+
+        //Act
+        userRepository.userId = userId
+        val result: Response<List<Post>> = userRepository.getPost()
+
+        //Assert
+        Assert.assertTrue(result.body()?.isEmpty()!!)
+    }
+
 }
