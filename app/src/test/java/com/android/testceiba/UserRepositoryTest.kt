@@ -32,4 +32,16 @@ class UserRepositoryTest {
         //Assert
         Assert.assertNotNull(result.body()!![0].name)
     }
+
+    @Test
+    fun getUsers_isFailure_nullList() = runBlocking {
+        //Arrange
+
+        //Act
+        val result: Response<List<User>> = userRepository.getUsers()
+
+        //Assert
+        Assert.assertNotNull(result.body())
+    }
+    
 }
