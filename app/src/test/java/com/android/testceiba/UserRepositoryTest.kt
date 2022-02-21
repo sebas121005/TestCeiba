@@ -52,8 +52,7 @@ class UserRepositoryTest {
         val userId = "1"
 
         //Act
-        userRepository.userId = userId
-        val result: Response<List<Post>> = userRepository.getPost()
+        val result: Response<List<Post>> = userRepository.getPost(userId)
 
         //Assert
         Assert.assertNotEquals(sizeList, result.body()?.size)
@@ -65,8 +64,7 @@ class UserRepositoryTest {
         val userId = "11"
 
         //Act
-        userRepository.userId = userId
-        val result: Response<List<Post>> = userRepository.getPost()
+        val result: Response<List<Post>> = userRepository.getPost(userId)
 
         //Assert
         Assert.assertTrue(result.body()?.isEmpty()!!)
