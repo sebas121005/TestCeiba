@@ -20,8 +20,9 @@ interface WebService {
         const val API_POST = "posts/"
         const val USER_ID = "userId"
         const val URL = "https://jsonplaceholder.typicode.com/"
-        
+
         var webService: WebService? = null
+        
         fun getInstance() : WebService {
             if (webService == null) {
                 val retrofit = Retrofit.Builder()
