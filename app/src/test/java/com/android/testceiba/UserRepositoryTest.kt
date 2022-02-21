@@ -21,4 +21,15 @@ class UserRepositoryTest {
         //Assert
         Assert.assertNotEquals(sizeList, result.body()?.size)
     }
+
+    @Test
+    fun getUsers_isCorrect_fieldNameExist() = runBlocking {
+        //Arrange
+
+        //Act
+        val result: Response<List<User>> = userRepository.getUsers()
+
+        //Assert
+        Assert.assertNotNull(result.body()!![0].name)
+    }
 }
